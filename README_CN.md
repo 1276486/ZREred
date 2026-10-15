@@ -1,6 +1,3 @@
-<div align="center">
-  <img src="images/logo.png" alt="ZREstrikeAI" width="200">
-</div>
 
 <h1 align="center">ZREstrikeAI</h1>
 
@@ -81,51 +78,7 @@ ZREstrikeAI 是一个面向**授权安全测试**的自托管平台。它把规�
 
 ---
 
-## 界面预览
 
-<div align="center">
-
-<table>
-<tr>
-<td width="50%" align="center"><strong>控制台 · 浅色</strong><br>
-<img src="./images/dashboard.png" alt="系统控制台 浅色模式" width="100%"></td>
-<td width="50%" align="center"><strong>控制台 · 深色</strong><br>
-<img src="./images/dark.png" alt="系统控制台 深色模式" width="100%"></td>
-</tr>
-</table>
-
-<details>
-<summary><strong>展开更多界面截图</strong></summary>
-<br>
-
-<table>
-<tr>
-<td width="33.33%" align="center"><strong>Web 控制台</strong><br><img src="./images/web-console.png" alt="Web 控制台" width="100%"></td>
-<td width="33.33%" align="center"><strong>任务管理</strong><br><img src="./images/task-management.png" alt="任务管理" width="100%"></td>
-<td width="33.33%" align="center"><strong>漏洞管理</strong><br><img src="./images/vulnerability-management.png" alt="漏洞管理" width="100%"></td>
-</tr>
-<tr>
-<td width="33.33%" align="center"><strong>WebShell 管理</strong><br><img src="./images/webshell-management.png" alt="WebShell 管理" width="100%"></td>
-<td width="33.33%" align="center"><strong>MCP 管理</strong><br><img src="./images/mcp-management.png" alt="MCP 管理" width="100%"></td>
-<td width="33.33%" align="center"><strong>知识库</strong><br><img src="./images/knowledge-base.png" alt="知识库" width="100%"></td>
-</tr>
-<tr>
-<td width="33.33%" align="center"><strong>Skills 管理</strong><br><img src="./images/skills.png" alt="Skills 管理" width="100%"></td>
-<td width="33.33%" align="center"><strong>Agent 管理</strong><br><img src="./images/agent-management.png" alt="Agent 管理" width="100%"></td>
-<td width="33.33%" align="center"><strong>角色管理</strong><br><img src="./images/role-management.png" alt="角色管理" width="100%"></td>
-</tr>
-<tr>
-<td width="33.33%" align="center"><strong>系统设置</strong><br><img src="./images/settings.png" alt="系统设置" width="100%"></td>
-<td width="33.33%" align="center"><strong>MCP stdio 模式</strong><br><img src="./images/mcp-stdio2.png" alt="MCP stdio 模式" width="100%"></td>
-<td width="33.33%" align="center"><strong>Burp Suite 插件</strong><br><img src="./images/plugins.png" alt="Burp Suite 插件" width="100%"></td>
-</tr>
-</table>
-
-</details>
-
-</div>
-
----
 
 ## 项目结构
 
