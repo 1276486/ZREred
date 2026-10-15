@@ -81,51 +81,7 @@ Built in Go with [Eino](https://github.com/cloudwego/eino)-powered agents, it co
 
 ---
 
-## Screenshots
 
-<div align="center">
-
-<table>
-<tr>
-<td width="50%" align="center"><strong>Dashboard — Light</strong><br>
-<img src="./images/dashboard.png" alt="System dashboard, light mode" width="100%"></td>
-<td width="50%" align="center"><strong>Dashboard — Dark</strong><br>
-<img src="./images/dark.png" alt="System dashboard, dark mode" width="100%"></td>
-</tr>
-</table>
-
-<details>
-<summary><strong>More screenshots</strong></summary>
-<br>
-
-<table>
-<tr>
-<td width="33.33%" align="center"><strong>Web Console</strong><br><img src="./images/web-console.png" alt="Web console" width="100%"></td>
-<td width="33.33%" align="center"><strong>Task Management</strong><br><img src="./images/task-management.png" alt="Task management" width="100%"></td>
-<td width="33.33%" align="center"><strong>Vulnerability Management</strong><br><img src="./images/vulnerability-management.png" alt="Vulnerability management" width="100%"></td>
-</tr>
-<tr>
-<td width="33.33%" align="center"><strong>WebShell Management</strong><br><img src="./images/webshell-management.png" alt="WebShell management" width="100%"></td>
-<td width="33.33%" align="center"><strong>MCP Management</strong><br><img src="./images/mcp-management.png" alt="MCP management" width="100%"></td>
-<td width="33.33%" align="center"><strong>Knowledge Base</strong><br><img src="./images/knowledge-base.png" alt="Knowledge base" width="100%"></td>
-</tr>
-<tr>
-<td width="33.33%" align="center"><strong>Skills</strong><br><img src="./images/skills.png" alt="Skills management" width="100%"></td>
-<td width="33.33%" align="center"><strong>Agents</strong><br><img src="./images/agent-management.png" alt="Agent management" width="100%"></td>
-<td width="33.33%" align="center"><strong>Roles</strong><br><img src="./images/role-management.png" alt="Role management" width="100%"></td>
-</tr>
-<tr>
-<td width="33.33%" align="center"><strong>Settings</strong><br><img src="./images/settings.png" alt="System settings" width="100%"></td>
-<td width="33.33%" align="center"><strong>MCP stdio Mode</strong><br><img src="./images/mcp-stdio2.png" alt="MCP stdio mode" width="100%"></td>
-<td width="33.33%" align="center"><strong>Burp Suite Plugin</strong><br><img src="./images/plugins.png" alt="Burp Suite plugin" width="100%"></td>
-</tr>
-</table>
-
-</details>
-
-</div>
-
----
 
 ## Project Layout
 
