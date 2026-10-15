@@ -1,0 +1,45 @@
+# ============================================================================
+# cordis.cyberstrike.patch.yml.example — dsh profile 注入模板（ZREstrikeAI 落库桥）
+#
+# 作用：向 dsh（DeepSeek Harness）的 web profile 注册一个 stdio MCP 客户端
+#       `mcp-cyberstrike`，spawn `bridge/cyberstrike_mcp.py`，让 dsh 会话内的
+#       agent 能把确认后的 项目/资产/漏洞 落库回 ZREstrikeAI 平台（/api）。
+#
+# 用法：不要直接改这个模板 —— run-all.sh 会做如下事情并生成一份带绝对路径的
+#       覆盖层（其余文件不变，符合 dsh 的“覆盖优先”组合模型）：
+#         1. 用平台侧 venv（含 mcp SDK）解析 /home/kali/claude/work/ZREredAI/ZREstrikeAI/bridge/.venv/bin/python
+#         2. 把本文件里的占位符替换为绝对路径
+#         3. 输出到 bridge/gen/cordis.cyberstrike.patch.yml
+#       之后：
+#         export ZRE_API_BASE=http://127.0.0.1:8080/api   # 或 https
+#         export ZRE_USERNAME=admin
+#         export ZRE_PASSWORD=<平台首次启动打印的 admin 密码>
+#         dsh web --patch "$PWD/bridge/gen/cordis.cyberstrike.patch.yml"
+#
+# 说明：
+#   * dsh-mcp-client 的 stdio spawn 会“清洗”父环境里的凭据形状变量（含 *_PASSWORD）
+#     再把本行 env 合并回去，因此 ZRE_PASSWORD 必须显式写进 env（!!js 运行时求值，
+#     不把明文写进仓库/配置）。ZRE_API_BASE/ZRE_USERNAME 同理显式透传。
+#   * failOnStartupError 保持 false：平台或桥没起来时 dsh web 照常可用（只少工具）。
+#   * toolCallTimeoutMs：hex/平台写库一般 <10s；给 60s 留足 HITL/重试余量。
+# ============================================================================
+- insert:
+    - id: mcp-cyberstrike
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: cyberstrike
+        transport: stdio
+        command: '/home/kali/claude/work/ZREredAI/ZREstrikeAI/bridge/.venv/bin/python'
+        args:
+          - '/home/kali/claude/work/ZREredAI/ZREstrikeAI/bridge/cyberstrike_mcp.py'
+          - --base-url
+          - 'https://127.0.0.1:8080/api'
+          - --username
+          - 'admin'
+        env:
+          ZRE_API_BASE: 'https://127.0.0.1:8080/api'
+          ZRE_USERNAME: 'admin'
+          ZRE_PASSWORD: !!js process.env.ZRE_PASSWORD || ''
+        cwd: !!js process.cwd()
+        toolCallTimeoutMs: 60000
+        failOnStartupError: false

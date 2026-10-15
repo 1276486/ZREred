@@ -1,0 +1,185 @@
+/* ============================================================================
+ * ZREstrikeAI — DeepSeek Harness 黑白极简主题
+ * 设计理念：纯黑白配色，极简设计，注重内容本身
+ * 参考：DeepSeek Harness 的现代极简风格
+ * ========================================================================== */
+
+/* ---------- 字体栈 ---------- */
+body,
+button,
+input,
+select,
+textarea {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+        'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+pre,
+code,
+kbd,
+samp,
+textarea.code,
+.terminal,
+.CodeMirror {
+    font-family: 'SF Mono', 'JetBrains Mono', 'Fira Code', Consolas,
+        'Liberation Mono', Menlo, Courier, 'PingFang SC', 'Microsoft YaHei';
+}
+
+/* ---------- 浅色主题：纯白背景 + 黑色文字 ---------- */
+:root {
+    /* 品牌/主色 - 黑白为主 */
+    --primary-color: #000000;
+    --secondary-color: #666666;
+    --accent-color: #000000;
+    --accent-hover: #333333;
+    --brand-core: #000000;
+    --brand-ai-start: #000000;
+    --brand-ai-end: #333333;
+    --brand-gradient: linear-gradient(120deg, #000000 0%, #333333 100%);
+
+    /* 背景/表面 - 纯白 */
+    --bg-primary: #ffffff;
+    --bg-secondary: #fafafa;
+    --bg-tertiary: #f5f5f5;
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+
+    /* 文本/边框 - 黑灰系 */
+    --text-primary: #000000;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --border-color: #e0e0e0;
+
+    /* 状态 */
+    --success-color: #000000;
+    --warning-color: #666666;
+    --error-color: #000000;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --close-btn-color: #000000;
+    --close-btn-bg-hover: #f5f5f5;
+    --close-btn-bg-active: #e0e0e0;
+}
+
+/* ---------- 暗色主题：纯黑背景 + 白色文字 ---------- */
+html[data-theme="dark"] {
+    --primary-color: #ffffff;
+    --secondary-color: #aaaaaa;
+    --accent-color: #ffffff;
+    --accent-hover: #cccccc;
+    --brand-core: #ffffff;
+    --brand-ai-start: #ffffff;
+    --brand-ai-end: #cccccc;
+    --brand-gradient: linear-gradient(120deg, #ffffff 0%, #cccccc 100%);
+
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
+    --bg-tertiary: #1a1a1a;
+    --card-bg: #000000;
+    --input-bg: #0a0a0a;
+
+    --text-primary: #ffffff;
+    --text-secondary: #aaaaaa;
+    --text-muted: #666666;
+    --border-color: #2a2a2a;
+
+    --success-color: #ffffff;
+    --warning-color: #aaaaaa;
+    --error-color: #ffffff;
+
+    --shadow-sm: 0 1px 2px rgba(255, 255, 255, 0.05);
+    --shadow-md: 0 2px 8px rgba(255, 255, 255, 0.08);
+    --shadow-lg: 0 4px 16px rgba(255, 255, 255, 0.12);
+    --close-btn-color: #ffffff;
+    --close-btn-bg-hover: #1a1a1a;
+    --close-btn-bg-active: #2a2a2a;
+}
+
+/* ---------- 细节：滚动条 / 选区 / 焦点（DSH 观感） ---------- */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+::selection {
+    background: color-mix(in srgb, var(--accent-color) 22%, transparent);
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent-color) 55%, transparent);
+    outline-offset: 1px;
+}
+
+/* 主品牌字标：DSH 蓝渐变，弱化原紫 */
+.brand-wordmark__core {
+    color: var(--brand-core);
+}
+.brand-wordmark__ai {
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* 侧栏：更贴合 DSH 的低饱和表面 */
+.main-sidebar {
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+}
+.nav-item-content:hover {
+    background: var(--bg-tertiary);
+}
+
+/* 按钮/输入基础色跟随主变量，选中卡片给出 DSH 蓝淡染 */
+.btn-primary,
+.login-submit {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+.btn-primary:hover,
+.login-submit:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+/* 消息/表格圆角、边框统一为当前 token（DSH 圆角语言） */
+.message-bubble,
+.card,
+.panel,
+.login-card,
+.table-container,
+.page-card {
+    border-radius: 10px;
+}
+
+/* 图表文字颜色跟随主题（dashboard 若用 canvas 颜色，由 js 读取 CSS 变量即可） */
+
+/* DSH 内嵌页 */
+#page-dsh.dsh-page { padding: 0; }
+#page-dsh.dsh-page:not(.active) { display: none; }
+.dsh-page .dsh-iframe {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 64px);
+    border: 0;
+    background: var(--bg-primary);
+}

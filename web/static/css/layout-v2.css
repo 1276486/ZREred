@@ -1,0 +1,360 @@
+/* ============================================================================
+ * ZREstrikeAI - Discord/Slack Style Layout v2
+ * 三栏布局：图标侧边栏 + 内容侧边栏 + 主内容区
+ * ========================================================================== */
+
+/* 主布局容器 - 三栏网格 */
+.main-layout {
+    display: grid !important;
+    grid-template-columns: 64px 240px 1fr !important;
+    gap: 0 !important;
+    flex: 1 !important;
+    overflow: hidden !important;
+}
+
+/* ============================================================================
+ * 图标侧边栏 (左侧第一栏 - 64px)
+ * ========================================================================== */
+.icon-sidebar {
+    width: 64px;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+    gap: 8px;
+    overflow-y: auto;
+}
+
+.icon-sidebar-brand {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+}
+
+.icon-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    align-items: center;
+}
+
+.icon-nav-item {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-secondary);
+    position: relative;
+}
+
+/* 线性图标统一块级显示，去掉 inline 基线带来的偏移 */
+.nav-icon {
+    display: block;
+    flex-shrink: 0;
+}
+
+.icon-nav-item:hover .nav-icon {
+    transform: scale(1.06);
+}
+
+.icon-nav-item .nav-icon {
+    transition: transform 0.2s ease;
+}
+
+.icon-nav-item:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.icon-nav-item.active {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+}
+
+.icon-nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 24px;
+    background: var(--text-primary);
+    border-radius: 0 4px 4px 0;
+}
+
+/* ============================================================================
+ * 内容侧边栏 (中间第二栏 - 240px)
+ * ========================================================================== */
+.context-sidebar {
+    width: 240px;
+    background: var(--bg-primary);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.context-sidebar-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.context-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.context-search {
+    width: 100%;
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-primary);
+    outline: none;
+    transition: all 0.2s;
+}
+
+.context-search:focus {
+    border-color: var(--text-primary);
+    background: var(--bg-primary);
+}
+
+.context-sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.context-item {
+    padding: 10px 12px;
+    margin: 2px 0;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.context-item:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.context-item.active {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* 图标容器：固定宽度让所有标签左对齐，图标本身用 currentColor 跟随主题与激活态 */
+.context-item-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: inherit;
+}
+
+.context-item svg,
+.context-item-icon svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* nav-icons.js 未加载时的占位方块，避免图标位塌陷导致文字错位 */
+.context-item-icon--fallback {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid currentColor;
+    border-radius: 4px;
+    opacity: 0.35;
+}
+
+.context-item-label {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 分组项（含子菜单的父项）右侧的展开箭头 */
+.context-item-caret {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: 10px;
+    line-height: 1;
+    opacity: 0.6;
+    transition: transform 0.2s ease;
+}
+
+.context-item.collapsed .context-item-caret {
+    transform: rotate(-90deg);
+}
+
+/* 子菜单样式
+ *
+ * 注意：style.css 里另有一个同名的 .context-submenu（对话页右键“下载 Markdown”
+ * 的浮动菜单），它是 position:absolute / left:100% 的飞出式菜单。这里必须用
+ * .context-sidebar-nav 限定作用域并显式覆盖定位属性，否则侧栏子菜单会被
+ * .context-sidebar 的 overflow:hidden 裁到可视区外，表现为“选项点不开”。 */
+.context-sidebar-nav .context-submenu {
+    position: static;
+    left: auto;
+    top: auto;
+    right: auto;
+    margin: 2px 0 4px 28px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    min-width: 0;
+    max-width: none;
+    max-height: none;
+    overflow: visible;
+    z-index: auto;
+    display: block;
+}
+
+.context-sidebar-nav .context-submenu.collapsed {
+    display: none;
+}
+
+.context-sidebar-nav .context-submenu-item {
+    padding: 7px 12px;
+    margin: 2px 0;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-muted);
+    white-space: normal;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 子项图标略小、略淡，让层级一眼看得出来 */
+.context-sidebar-nav .context-submenu-item .context-item-icon,
+.context-sidebar-nav .context-submenu-item .context-item-icon svg {
+    width: 15px;
+    height: 15px;
+}
+
+.context-sidebar-nav .context-submenu-item .context-item-icon {
+    opacity: 0.75;
+}
+
+.context-sidebar-nav .context-submenu-item.active .context-item-icon {
+    opacity: 1;
+}
+
+.context-sidebar-nav .context-submenu-item:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+.context-sidebar-nav .context-submenu-item.active {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* ============================================================================
+ * 主内容区域 (第三栏 - 自适应)
+ * ========================================================================== */
+.content-area {
+    background: var(--bg-secondary);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* 隐藏旧的侧边栏 */
+.main-sidebar {
+    display: none !important;
+}
+
+/* ============================================================================
+ * 响应式调整
+ * ========================================================================== */
+@media (max-width: 1024px) {
+    .main-layout {
+        grid-template-columns: 64px 200px 1fr !important;
+    }
+
+    .context-sidebar {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-layout {
+        grid-template-columns: 64px 1fr !important;
+    }
+
+    .context-sidebar {
+        display: none;
+    }
+
+    .icon-sidebar {
+        width: 56px;
+    }
+
+    .icon-nav-item {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* ============================================================================
+ * 暗色主题适配
+ * ========================================================================== */
+html[data-theme="dark"] .icon-sidebar {
+    background: #0a0a0a;
+}
+
+html[data-theme="dark"] .context-sidebar {
+    background: #000000;
+}
+
+html[data-theme="dark"] .icon-nav-item.active {
+    background: #ffffff;
+    color: #000000;
+}
+
+html[data-theme="dark"] .icon-nav-item.active::before {
+    background: #ffffff;
+}
