@@ -1,299 +1,203 @@
 <div align="center">
-  <img src="images/logo.png" alt="ZREstrikeAI Logo" width="200" >
+  <img src="images/logo.png" alt="ZREstrikeAI" width="200">
 </div>
 
-# ZREstrikeAI
+<h1 align="center">ZREstrikeAI</h1>
 
+<p align="center">
+  <strong>AI-native security operations platform — where intent becomes governed execution,<br>
+  evidence becomes operational memory, and every operation improves the next.</strong>
+</p>
 
-[中文](README_CN.md) | [English](README.md)
+<p align="center">
+  <a href="README_CN.md">中文文档</a> ·
+  <a href="docs/en-US/README.md">Documentation</a> ·
+  <a href="#quick-start">Quick Start</a> ·
+  <a href="#configuration">Configuration</a> ·
+  <a href="#license-and-attribution">License</a>
+</p>
 
-**The system of action for AI-native cybersecurity—where intent becomes governed execution, evidence becomes operational memory, and every operation improves the next.**
+<p align="center">
+  <img src="https://img.shields.io/badge/Go-1.25%2B-00ADD8?logo=go&logoColor=white" alt="Go 1.25+">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white" alt="Python 3.10+">
+  <img src="https://img.shields.io/badge/MCP-native-6E4AFF" alt="MCP native">
+  <img src="https://img.shields.io/badge/license-Apache--2.0-blue" alt="Apache-2.0">
+</p>
 
-ZREstrikeAI connects planning, execution, human oversight, evidence, and replay in one auditable workspace. Built in Go, it combines Eino-powered agents, MCP-native tools, RAG knowledge, visual workflows, and attack-chain modeling and analysis for authorized security operations.
+---
 
-**Start here:** [Quick start](#quick-start-one-command-deployment) · [Documentation](docs/en-US/README.md) · [Security hardening](docs/en-US/security-hardening.md)
+## Overview
 
-> [!IMPORTANT]
-> Use CyberStrikeAI only on systems you own or are explicitly authorized to test. For shared or production environments, review the [security model](docs/en-US/security-model.md) and [hardening guide](docs/en-US/security-hardening.md) before enabling high-risk tools, WebShell, or C2 capabilities.
+ZREstrikeAI is a self-hosted platform for **authorized** security operations. It unifies planning, execution, human oversight, evidence collection, and replay into a single auditable workspace, so that every action an AI agent takes is governed, reviewable, and reproducible.
 
-## Interface & Integration Preview
+Built in Go with [Eino](https://github.com/cloudwego/eino)-powered agents, it combines multi-agent orchestration, MCP-native tooling, RAG knowledge retrieval, visual graph workflows, and attack-chain modeling.
 
-<div align="center">
+| | |
+|---|---|
+| **Language** | Go 1.25+ / Python 3.10+ |
+| **Agent runtime** | Eino — single-agent, Deep, Plan-Execute, Supervisor |
+| **Tool protocol** | MCP (HTTP / stdio / SSE / external federation) |
+| **Interfaces** | Web console, REST API, MCP stdio, chatbot bridges |
+| **License** | Apache-2.0 |
 
-### System Dashboard Overview
+---
 
-<table>
-<tr>
-<td width="50%" align="center">
-<strong>Light Mode</strong><br/>
-<img src="./images/dashboard.png" alt="System Dashboard (Light)" width="100%">
-</td>
-<td width="50%" align="center">
-<strong>Dark Mode</strong><br/>
-<img src="./images/dark.png" alt="System Dashboard (Dark)" width="100%">
-</td>
-</tr>
-</table>
+## Key Capabilities
 
-*The dashboard provides a comprehensive overview of system runtime status, security vulnerabilities, tool usage, and knowledge base, helping users quickly understand the platform's core features and current state.*
+### Agent orchestration
 
-<details>
-<summary><strong>More interface screenshots</strong></summary>
-
-### Core Features Overview
-
-<table>
-<tr>
-<td width="33.33%" align="center">
-<strong>Web Console</strong><br/>
-<img src="./images/web-console.png" alt="Web Console" width="100%">
-</td>
-<td width="33.33%" align="center">
-<strong>Task Management</strong><br/>
-<img src="./images/task-management.png" alt="Task Management" width="100%">
-</td>
-<td width="33.33%" align="center">
-<strong>Vulnerability Management</strong><br/>
-<img src="./images/vulnerability-management.png" alt="Vulnerability Management" width="100%">
-</td>
-</tr>
-<tr>
-<td width="33.33%" align="center">
-<strong>WebShell Management</strong><br/>
-<img src="./images/webshell-management.png" alt="WebShell Management" width="100%">
-</td>
-<td width="33.33%" align="center">
-<strong>MCP Management</strong><br/>
-<img src="./images/mcp-management.png" alt="MCP management" width="100%">
-</td>
-<td width="33.33%" align="center">
-<strong>Knowledge Base</strong><br/>
-<img src="./images/knowledge-base.png" alt="Knowledge Base" width="100%">
-</td>
-</tr>
-<tr>
-<td width="33.33%" align="center">
-<strong>Skills Management</strong><br/>
-<img src="./images/skills.png" alt="Skills Management" width="100%">
-</td>
-<td width="33.33%" align="center">
-<strong>Agent Management</strong><br/>
-<img src="./images/agent-management.png" alt="Agent Management" width="100%">
-</td>
-<td width="33.33%" align="center">
-<strong>Role Management</strong><br/>
-<img src="./images/role-management.png" alt="Role Management" width="100%">
-</td>
-</tr>
-<tr>
-<td width="33.33%" align="center">
-<strong>System Settings</strong><br/>
-<img src="./images/settings.png" alt="System settings" width="100%">
-</td>
-<td width="33.33%" align="center">
-<strong>MCP stdio Mode</strong><br/>
-<img src="./images/mcp-stdio2.png" alt="MCP stdio mode" width="100%">
-</td>
-<td width="33.33%" align="center">
-<strong>Burp Suite Plugin</strong><br/>
-<img src="./images/plugins.png" alt="Burp Suite plugin" width="100%">
-</td>
-</tr>
-</table>
-
-</details>
-
-</div>
-
-## Highlights
-
-### Agents and orchestration
-
-- 🤖 **Agentic execution** translates natural-language intent into governed, auditable security actions.
-- 🧩 **Eino orchestration** supports single-agent execution plus Deep, Plan-Execute, and Supervisor multi-agent modes.
-- 🔀 **Graph workflows** combine Agents, tools, conditions, approvals, and outputs into reusable flows.
-- 🎭 **Role-based testing** provides focused prompts and tool policies for common security scenarios.
+- **Intent-to-action pipeline** — natural-language objectives are translated into governed, auditable security actions.
+- **Four execution modes** — single agent, Deep reasoning, Plan-Execute, and Supervisor multi-agent coordination.
+- **Graph workflows** — compose agents, tools, conditions, approvals, and outputs into reusable flows.
+- **Role-scoped testing** — 14 predefined roles with focused prompts and per-role tool policies.
 
 ### Tools and knowledge
 
-- 🧰 **Security tools** include 100+ curated YAML recipes with custom extensions and role-scoped access.
-- 🔌 **MCP integration** supports HTTP, stdio, SSE, external federation, and dynamic tool discovery.
-- ⏱️ **Resilient tool execution** runs blocking MCP/tool calls in workers with bounded agent waits, resumable `execution_id` polling, cancellation, per-server circuit breakers, concurrency limits, and unified output caps.
-- 🎯 **Agent Skills** follow the standard Skill layout and support progressive, on-demand loading.
-- 📚 **Knowledge base** combines query rewriting, vector retrieval, reranking, and result post-processing.
-- 🖼️ **Vision analysis** uses a separate vision model for screenshots, captchas, and UI while retaining text summaries only.
+- **90+ curated tool recipes** — declarative YAML definitions with custom extensions and role-scoped access.
+- **MCP-native integration** — HTTP, stdio, SSE, external federation, and dynamic tool discovery.
+- **Resilient execution** — blocking tool calls run in workers with bounded waits, resumable `execution_id` polling, cancellation, per-server circuit breakers, and concurrency limits.
+- **Agent Skills** — standard `SKILL.md` layout with progressive, on-demand loading (24 shipped).
+- **RAG knowledge base** — query rewriting, vector retrieval, reranking, and result post-processing.
+- **Vision analysis** — a dedicated vision model handles screenshots, captchas, and UI, retaining text summaries only.
 
 ### Governance and audit
 
-- 🧑‍⚖️ **Human in the loop** provides approval modes, tool allowlists, audit-agent review, and traceable decisions.
-- 🔐 **Platform RBAC** supports multiple users, system and custom roles, scoped permissions, ownership, and explicit assignments.
-- 🔒 **Security and audit** provide authenticated access, audit logs, SQLite persistence, and operational evidence retention.
-- 📄 **Result governance** stores the same capped tool result seen by the agent, protects resume paths from oversized historical output, and adds UI safeguards for large detail views. See [Tool Execution Governance](docs/en-US/tool-execution-governance.md).
+- **Human in the loop** — approval modes, tool allowlists, audit-agent review, and traceable decision records.
+- **Platform RBAC** — multi-user support with system and custom roles, scoped permissions, and explicit ownership.
+- **Evidence retention** — authenticated access, audit logs, SQLite persistence, and capped tool-result storage.
+- **Result governance** — the agent sees exactly the capped result that is stored, preventing oversized historical output from breaking resume paths. See [Tool Execution Governance](docs/en-US/tool-execution-governance.md).
 
 ### Security operations
 
-- 📁 **Conversation management** provides pinning, renaming, and batch organization.
-- 📂 **Projects and attack chains** connect cross-session facts, risk scoring, graph views, and step-by-step replay.
-- 🗂️ **Asset management** normalizes and deduplicates domains, IP addresses, ports, and services; supports XLSX/CSV import and export, advanced filters and saved views, ownership and business metadata, cross-page bulk maintenance, and duplicate merging; and tracks scan coverage, linked vulnerabilities, and risk state. See the [Asset Management guide](docs/en-US/asset-management.md).
-- 🛡️ **Vulnerability management** provides severity classification, lifecycle tracking, filtering, and statistics.
-- 📋 **Batch tasks** provide queued execution, editing, status tracking, and retained results.
-- 📱 **Chatbots** connect Personal WeChat, WeCom, DingTalk, Lark, Telegram, Slack, Discord, and QQ Bot.
+- **Asset management** — normalize and deduplicate domains, IPs, ports, and services; XLSX/CSV import and export, saved views, cross-page bulk maintenance, and scan-coverage tracking. See the [Asset Management guide](docs/en-US/asset-management.md).
+- **Vulnerability management** — severity classification, lifecycle tracking, filtering, and statistics.
+- **Projects and attack chains** — cross-session fact linking, risk scoring, graph views, and step-by-step replay.
+- **Batch tasks** — queued execution, editing, status tracking, and retained results.
+- **WebShell management** — connection management, virtual terminal, file operations, and AI-assisted workflows.
+- **Built-in C2** — listeners, encrypted beacons, session handling, task queues, and payload helpers.
+- **Chatbot bridges** — Personal WeChat, WeCom, DingTalk, Lark, Telegram, Slack, Discord, and QQ Bot.
 
-### Authorized security operations
+> WebShell, C2, and other high-risk capabilities are intended **only** for systems you own or have explicit written authorization to test. Review the [security model](docs/en-US/security-model.md) and [hardening guide](docs/en-US/security-hardening.md) before enabling them.
 
-- 🐚 **WebShell management** provides connection management, a virtual terminal, file operations, and AI-assisted workflows.
-- 📡 **Built-in C2** provides listeners, encrypted beacons, sessions, task queues, payload helpers, and live events.
+---
 
-> WebShell, C2, and other high-risk capabilities are for systems you own or are explicitly authorized to test. See the [security model](docs/en-US/security-model.md) and [hardening guide](docs/en-US/security-hardening.md).
+## Screenshots
 
-## Plugins
+<div align="center">
 
-CyberStrikeAI includes optional integrations under `plugins/`.
-
-- **Burp Suite extension**: `plugins/burp-suite/cyberstrikeai-burp-extension/`  
-  Build output: `plugins/burp-suite/cyberstrikeai-burp-extension/dist/cyberstrikeai-burp-extension.jar`  
-  Docs: `plugins/burp-suite/cyberstrikeai-burp-extension/README.md`
-- **Browser extension (Chrome / Edge)**: `plugins/browser-extension/cyberstrikeai-browser-extension/`  
-  Capture Network traffic in DevTools and send it to CyberStrikeAI for AI-assisted security testing—aligned with the Burp plugin.  
-  Install: `chrome://extensions/` → Load unpacked → F12 → **CyberStrikeAI** tab  
-  Package output: `plugins/browser-extension/cyberstrikeai-browser-extension/dist/cyberstrikeai-browser-extension.zip`  
-  Docs: `plugins/browser-extension/cyberstrikeai-browser-extension/README.md` / `README.zh-CN.md`
-
-## Tool Overview
-
-CyberStrikeAI ships with 100+ curated tools covering the whole kill chain:
+<table>
+<tr>
+<td width="50%" align="center"><strong>Dashboard — Light</strong><br>
+<img src="./images/dashboard.png" alt="System dashboard, light mode" width="100%"></td>
+<td width="50%" align="center"><strong>Dashboard — Dark</strong><br>
+<img src="./images/dark.png" alt="System dashboard, dark mode" width="100%"></td>
+</tr>
+</table>
 
 <details>
-<summary><strong>View the complete tool categories</strong></summary>
+<summary><strong>More screenshots</strong></summary>
+<br>
 
-- **Network Scanners** – nmap, masscan, rustscan, arp-scan, nbtscan
-- **Web & App Scanners** – sqlmap, nikto, dirb, gobuster, feroxbuster, ffuf, httpx
-- **Vulnerability Scanners** – nuclei, wpscan, wafw00f, dalfox, xsser
-- **Subdomain Enumeration** – subfinder, amass, findomain, dnsenum, fierce
-- **Network Space Search Engines** – fofa_search, zoomeye_search, quake_search, shodan_search
-- **API Security** – graphql-scanner, arjun, api-fuzzer, api-schema-analyzer
-- **Container Security** – trivy, clair, docker-bench-security, kube-bench, kube-hunter
-- **Cloud Security** – prowler, scout-suite, cloudmapper, pacu, terrascan, checkov
-- **Binary Analysis** – gdb, radare2, ghidra, objdump, strings, binwalk
-- **Exploitation** – metasploit, msfvenom, pwntools, ropper, ropgadget
-- **Password Cracking** – hashcat, john, hashpump
-- **Forensics** – volatility, volatility3, foremost, steghide, exiftool
-- **Post-Exploitation** – linpeas, winpeas, mimikatz, bloodhound, impacket, responder
-- **CTF Utilities** – stegsolve, zsteg, hash-identifier, fcrackzip, pdfcrack, cyberchef
-- **System Helpers** – exec, create-file, delete-file, list-files, modify-file
+<table>
+<tr>
+<td width="33.33%" align="center"><strong>Web Console</strong><br><img src="./images/web-console.png" alt="Web console" width="100%"></td>
+<td width="33.33%" align="center"><strong>Task Management</strong><br><img src="./images/task-management.png" alt="Task management" width="100%"></td>
+<td width="33.33%" align="center"><strong>Vulnerability Management</strong><br><img src="./images/vulnerability-management.png" alt="Vulnerability management" width="100%"></td>
+</tr>
+<tr>
+<td width="33.33%" align="center"><strong>WebShell Management</strong><br><img src="./images/webshell-management.png" alt="WebShell management" width="100%"></td>
+<td width="33.33%" align="center"><strong>MCP Management</strong><br><img src="./images/mcp-management.png" alt="MCP management" width="100%"></td>
+<td width="33.33%" align="center"><strong>Knowledge Base</strong><br><img src="./images/knowledge-base.png" alt="Knowledge base" width="100%"></td>
+</tr>
+<tr>
+<td width="33.33%" align="center"><strong>Skills</strong><br><img src="./images/skills.png" alt="Skills management" width="100%"></td>
+<td width="33.33%" align="center"><strong>Agents</strong><br><img src="./images/agent-management.png" alt="Agent management" width="100%"></td>
+<td width="33.33%" align="center"><strong>Roles</strong><br><img src="./images/role-management.png" alt="Role management" width="100%"></td>
+</tr>
+<tr>
+<td width="33.33%" align="center"><strong>Settings</strong><br><img src="./images/settings.png" alt="System settings" width="100%"></td>
+<td width="33.33%" align="center"><strong>MCP stdio Mode</strong><br><img src="./images/mcp-stdio2.png" alt="MCP stdio mode" width="100%"></td>
+<td width="33.33%" align="center"><strong>Burp Suite Plugin</strong><br><img src="./images/plugins.png" alt="Burp Suite plugin" width="100%"></td>
+</tr>
+</table>
 
 </details>
 
-See [tools/README_EN.md](tools/README_EN.md) for tool definitions, customization, and usage notes.
+</div>
 
-## Basic Usage
+---
 
-### Quick Start (One-Command Deployment)
+## Project Layout
 
-**Prerequisites:**
-- Go 1.25+ ([Install](https://go.dev/dl/); required by `go.mod`)
-- Python 3.10+ ([Install](https://www.python.org/downloads/))
+```
+ZREstrikeAI/
+├── cmd/                 # Entrypoints: server, MCP stdio, tooling
+├── internal/            # 31 packages — agent, multiagent, mcp, eino*, c2, hitl, knowledge, security, workflow
+├── web/                 # Web console (static SPA + templates)
+├── tools/               # 90 declarative YAML tool recipes
+├── roles/               # 14 predefined security testing roles
+├── skills/              # 24 Agent Skills (SKILL.md layout)
+├── agents/              # 16 multi-agent definitions (orchestrator + sub-agents)
+├── plugins/             # Burp Suite extension, Chrome/Edge extension
+├── docs/                # 32 EN / 34 ZH topic documents
+├── images/              # Screenshots and diagrams
+├── config.example.yaml  # Configuration template
+├── run.sh               # One-command launcher
+├── run-all.sh           # Full-stack launcher
+└── upgrade.sh           # In-place upgrade
+```
 
-**One-Command Deployment:**
+---
+
+## Quick Start
+
+**Prerequisites**
+
+- **Go 1.25+** — [download](https://go.dev/dl/)
+- **Python 3.10+** — [download](https://www.python.org/downloads/)
+
+**One-command deployment**
+
 ```bash
-git clone https://github.com/Ed1s0nZ/CyberStrikeAI.git
-cd CyberStrikeAI
+git clone https://github.com/1276486/ZREred.git
+cd ZREred
 chmod +x run.sh && ./run.sh
 ```
 
-The `run.sh` script will automatically:
-- ✅ Check and validate Go & Python environments
-- ✅ Create Python virtual environment
-- ✅ Install Python dependencies
-- ✅ Download Go dependencies
-- ✅ Build the project
-- ✅ Start the server
+`run.sh` will check the Go and Python toolchains, create the Python virtual environment, install dependencies, download Go modules, build the binary, and start the server.
 
-**Verify the startup:**
+**Verify startup**
 
-1. Confirm the terminal displays `● ONLINE` followed by the actual Web UI URL.
-2. Open that URL; the default HTTPS mode uses a local self-signed certificate, so accept the browser warning once.
-3. On a new installation, store the one-time `admin` password shown under `ADMIN SETUP REQUIRED`, sign in, and change it immediately.
+1. The terminal prints `● ONLINE` followed by the Web UI URL.
+2. Open that URL. The default HTTPS mode uses a local self-signed certificate — accept the browser warning once.
+3. On a fresh install, copy the one-time `admin` password shown under `ADMIN SETUP REQUIRED`, sign in, and change it immediately.
 
-**Networking defaults:** `run.sh` starts the server with **`--https`** and the repo **`config.yaml`** (local self-signed TLS; better for many concurrent streams). Use **`./run.sh --http`** for plain HTTP. In production, set **`server.tls_cert_path`** / **`server.tls_key_path`** in **`config.yaml`** (see comments there). For manual runs, add **`--https`** or **`CYBERSTRIKE_HTTPS=1`**; if **`-config`** is wrong, the binary prints a short usage hint on stderr.
+**Networking defaults** — `run.sh` starts the server with `--https` using `config.yaml` (self-signed TLS, better for many concurrent streams). Use `./run.sh --http` for plain HTTP. In production, set `server.tls_cert_path` and `server.tls_key_path` in `config.yaml`. For manual runs, pass `--https` or set `CYBERSTRIKE_HTTPS=1`.
 
-**First-Time Configuration:**
-1. **Configure AI channels** (required before first use)
-   - After launch, open **`https://127.0.0.1:8080/`** (or **`https://localhost:8080/`**; replace **8080** with `server.port` in `config.yaml`) and accept the self-signed certificate warning once. If you used `./run.sh --http`, use **`http://`** instead.
-   - Go to `System Settings` → `Basic Settings` → `AI Channel Configuration`, add or edit a channel, then fill in provider, Base URL, API key, model, and token limits. Click **Save changes**. The left channel list supports setting a default, copy, delete, and bulk probe.
-     ```yaml
-     ai:
-       default_channel: openai-main
-       channels:
-         openai-main:
-           name: OpenAI Main
-           provider: openai_compatible
-           api_key: "${OPENAI_API_KEY}"
-           base_url: "https://api.openai.com/v1"  # or https://api.deepseek.com/v1
-           model: "gpt-4o"  # or deepseek-chat, qwen3-max, etc.
-           max_total_tokens: 120000
-           max_completion_tokens: 16384
-     ```
-   - Or edit `config.yaml` directly before launching. `ai.default_channel` is used for new conversations and tasks that do not explicitly select a channel; the chat page can also select any saved channel per session.
-2. **Login** - On first startup the console prints an auto-generated initial `admin` password; create accounts from **Platform permissions → User management**
-3. **Install security tools (optional)** - Install tools from `tools/` as needed; missing tools are skipped or substituted at runtime. Common examples:
+**Alternative launch methods**
 
-   **macOS (Homebrew):**
-   ```bash
-   brew install nmap masscan sqlmap nikto gobuster ffuf hydra hashcat nuclei subfinder
-   ```
-
-   **Linux (Kali / Debian / Ubuntu):**
-   ```bash
-   sudo apt update
-   sudo apt install -y nmap masscan sqlmap nikto gobuster hydra hashcat john binwalk
-   # On some distros, install ffuf/nuclei/subfinder via go install or upstream docs
-   ```
-
-   See the `tools/` directory for the full list; refer to each tool's official docs for install details.
-
-**Alternative Launch Methods:**
 ```bash
-# Direct Go run (set up env yourself); add --https to match run.sh defaults
+# Direct Go run
 go run cmd/server/main.go --https
 
-# Manual build
+# Manual build (same output name as run.sh)
 go build -o cyberstrike-ai cmd/server/main.go
 ./cyberstrike-ai --https
 ```
 
-If server logs show `client sent an HTTP request to an HTTPS server`, a client is still using **`http://`** on a TLS-only port—switch the URL to **`https://`**.
+If the log shows `client sent an HTTP request to an HTTPS server`, a client is still using `http://` against a TLS-only port — switch the URL to `https://`.
 
-**Note:** The Python virtual environment (`venv/`) is automatically created and managed by `run.sh`. Tools that require Python (like `api-fuzzer`, `http-framework-test`, etc.) will automatically use this environment.
-
-### Upgrade and Compatibility
-
-**CyberStrikeAI one-click upgrade:**
-1. (First time) enable the script: `chmod +x upgrade.sh`
-2. Upgrade with: `./upgrade.sh` (optional flags: `--tag vX.Y.Z`, `--no-venv`, `--yes`). Local `tools/`, `roles/`, and `skills/` are always preserved.
-3. The script will back up your `config.yaml` and `data/`, upgrade the code from GitHub Release, update `config.yaml`'s `version`, then restart the server.
-
-Recommended one-liner:
-`chmod +x upgrade.sh && ./upgrade.sh --yes`
-
-If something goes wrong, you can restore from `.upgrade-backup/` (or manually copy `/data` and `config.yaml` back) and run `./run.sh` again.
-
-Requirements / tips:
-* You need `curl` or `wget` for downloading Release packages.
-* `rsync` is recommended/required for the safe code sync.
-* If GitHub API rate-limits you, set `export GITHUB_TOKEN="..."` before running `./upgrade.sh`.
-
-⚠️ **Before upgrading:** review the target release notes for configuration, database, and API changes. Backups are required even for patch upgrades; a version number alone is not a compatibility guarantee.
-
+---
 
 ## Configuration
 
-Use [`config.example.yaml`](config.example.yaml) as the authoritative configuration template and copy only the values required for your environment. At minimum, configure the server and one AI channel:
+Use [`config.example.yaml`](config.example.yaml) as the authoritative template and copy only the values your environment needs. At minimum, configure the server and one AI channel:
 
 ```yaml
 server:
   host: "127.0.0.1"
   port: 8080
+
 ai:
   default_channel: openai-main
   channels:
@@ -304,36 +208,84 @@ ai:
       model: "your-model"
 ```
 
-`openai` is a backward-compatible runtime field; maintain new model settings in `ai.channels`. Do not commit real credentials. Review the [configuration reference](docs/en-US/configuration.md), [recommended profiles](docs/en-US/configuration-profiles.md), and [security hardening guide](docs/en-US/security-hardening.md) before exposing the service beyond localhost.
+The legacy `openai` top-level field is retained for backward compatibility; configure new models under `ai.channels`. `ai.default_channel` is used for new conversations and for tasks that do not select a channel explicitly — the chat page can still override per session.
 
-## Related documentation
+> **Never commit real credentials.** `config.yaml`, `data/`, and `chat_uploads/` are excluded by [`.gitignore`](.gitignore). Provide secrets through environment variables such as `${OPENAI_API_KEY}`.
 
-- **New users:** [Deployment](docs/en-US/deployment.md) → [Configuration](docs/en-US/configuration.md) → [Troubleshooting](docs/en-US/troubleshooting.md)
-- **Operators:** [Configuration profiles](docs/en-US/configuration-profiles.md) → [Security hardening](docs/en-US/security-hardening.md) → [Runbooks](docs/en-US/runbooks.md)
-- **Integrators:** [API reference](docs/en-US/api-reference.md) → [API recipes](docs/en-US/api-recipes.md) → [MCP federation](docs/en-US/mcp-federation.md)
-- **Contributors:** [Developer guide](docs/en-US/developer-guide.md) → [Testing](docs/en-US/testing.md) → [Contributing](docs/en-US/contributing-guide.md)
-- **All topics:** [English documentation](docs/en-US/README.md) · [Bilingual documentation index](docs/README.md)
+Review the [configuration reference](docs/en-US/configuration.md), [recommended profiles](docs/en-US/configuration-profiles.md), and the [security hardening guide](docs/en-US/security-hardening.md) before exposing the service beyond localhost.
 
-## Project Layout
+**Security tools (optional)** — install from `tools/` as needed; missing tools are skipped or substituted at runtime.
 
-```
-CyberStrikeAI/
-├── cmd/                 # Server, MCP stdio entrypoints, tooling
-├── internal/            # Agent, MCP core, handlers, C2 (`internal/c2`), security executor
-├── web/                 # Static SPA + templates
-├── tools/               # YAML tool recipes (100+ examples provided)
-├── roles/               # Role configurations (12+ predefined security testing roles)
-├── skills/              # Agent Skills dirs (SKILL.md + optional files; demo: cyberstrike-eino-demo)
-├── agents/              # Multi-agent Markdown (orchestrator.md + sub-agent *.md)
-├── docs/                # Topic docs (deployment, config, security, API, knowledge base, C2, WebShell, etc.)
-├── images/              # Docs screenshots & diagrams
-├── scripts/             # Repository maintenance checks, including documentation validation
-├── config.yaml          # Runtime configuration
-├── run.sh               # Convenience launcher
-└── README*.md
+```bash
+# macOS
+brew install nmap masscan sqlmap nikto gobuster ffuf hydra hashcat nuclei subfinder
+
+# Debian / Ubuntu / Kali
+sudo apt update
+sudo apt install -y nmap masscan sqlmap nikto gobuster hydra hashcat john binwalk
+# ffuf / nuclei / subfinder are typically installed via `go install` or upstream releases
 ```
 
-## Basic Usage Examples
+---
+
+## Tool Coverage
+
+ZREstrikeAI ships with 90 curated tool recipes spanning the full kill chain.
+
+<details>
+<summary><strong>View all tool categories</strong></summary>
+<br>
+
+| Category | Tools |
+|---|---|
+| Network scanning | nmap, masscan, rustscan, arp-scan, nbtscan |
+| Web & app scanning | sqlmap, nikto, dirb, gobuster, feroxbuster, ffuf, httpx |
+| Vulnerability scanning | nuclei, wpscan, wafw00f, dalfox, xsser |
+| Subdomain enumeration | subfinder, amass, findomain, dnsenum, fierce |
+| Internet-wide search | fofa, zoomeye, quake, shodan |
+| API security | graphql-scanner, arjun, api-fuzzer, api-schema-analyzer |
+| Container security | trivy, clair, docker-bench-security, kube-bench, kube-hunter |
+| Cloud security | prowler, scout-suite, cloudmapper, pacu, terrascan, checkov |
+| Binary analysis | gdb, radare2, ghidra, objdump, strings, binwalk |
+| Exploitation | metasploit, msfvenom, pwntools, ropper, ropgadget |
+| Password cracking | hashcat, john, hashpump |
+| Forensics | volatility, volatility3, foremost, steghide, exiftool |
+| Post-exploitation | linpeas, winpeas, mimikatz, bloodhound, impacket, responder |
+| CTF utilities | stegsolve, zsteg, hash-identifier, fcrackzip, pdfcrack, cyberchef |
+| System helpers | exec, create-file, delete-file, list-files, modify-file |
+
+</details>
+
+See [`tools/README_EN.md`](tools/README_EN.md) for recipe definitions, customization, and usage notes.
+
+---
+
+## Plugins
+
+Optional integrations live under `plugins/`.
+
+**Burp Suite extension** — capture and forward authenticated traffic into ZREstrikeAI for AI-assisted analysis.
+
+```
+Source:  plugins/burp-suite/cyberstrikeai-burp-extension/
+Output:  plugins/burp-suite/cyberstrikeai-burp-extension/dist/cyberstrikeai-burp-extension.jar
+Docs:    plugins/burp-suite/cyberstrikeai-burp-extension/README.md
+```
+
+**Browser extension (Chrome / Edge)** — capture DevTools network traffic and forward it to ZREstrikeAI, aligned with the Burp plugin.
+
+```
+Source:   plugins/browser-extension/cyberstrikeai-browser-extension/
+Install:  chrome://extensions/ → Load unpacked → F12 → "CyberStrikeAI" tab
+Package:  plugins/browser-extension/cyberstrikeai-browser-extension/dist/cyberstrikeai-browser-extension.zip
+Docs:     plugins/browser-extension/cyberstrikeai-browser-extension/README.md
+```
+
+---
+
+## Usage Examples
+
+**Direct requests**
 
 ```
 Scan open ports on 192.168.1.1
@@ -343,75 +295,71 @@ Scan https://example.com for hidden directories and outdated software
 Enumerate subdomains for example.com, then run nuclei against the results
 ```
 
-## Advanced Playbooks
+**Multi-step playbooks**
 
 ```
-Load the recon-engagement template, run amass/subfinder, then brute-force dirs on every live host.
-Use external Burp-based MCP server for authenticated traffic replay, then pass findings back for graphing.
+Load the recon-engagement template, run amass/subfinder, then brute-force directories on every live host.
+Use an external Burp-based MCP server for authenticated traffic replay, then pass findings back for graphing.
 Compress the 5 MB nuclei report, summarize critical CVEs, and attach the artifact to the conversation.
 Build an attack chain for the latest engagement and export the node list with severity >= high.
 ```
 
-## 404Starlink 
+---
 
-<img src="./images/404StarLinkLogo.png" width="30%">
+## Documentation
 
-CyberStrikeAI has joined [404Starlink](https://github.com/knownsec/404StarLink)
+| Audience | Reading order |
+|---|---|
+| **New users** | [Deployment](docs/en-US/deployment.md) → [Configuration](docs/en-US/configuration.md) → [Troubleshooting](docs/en-US/troubleshooting.md) |
+| **Operators** | [Configuration profiles](docs/en-US/configuration-profiles.md) → [Security hardening](docs/en-US/security-hardening.md) → [Runbooks](docs/en-US/runbooks.md) |
+| **Integrators** | [API reference](docs/en-US/api-reference.md) → [API recipes](docs/en-US/api-recipes.md) → [MCP federation](docs/en-US/mcp-federation.md) |
+| **Contributors** | [Developer guide](docs/en-US/developer-guide.md) → [Testing](docs/en-US/testing.md) → [Contributing](docs/en-US/contributing-guide.md) |
 
-## TCH Top-Ranked Intelligent Pentest Project  
-<div align="left">
-  <a href="https://zc.tencent.com/competition/competitionHackathon?code=cha004" target="_blank">
-    <img src="./images/tch.png" alt="TCH Top-Ranked Intelligent Pentest Project" width="30%">
-  </a>
-</div>
-
-
+Full indexes: [English](docs/en-US/README.md) · [Bilingual](docs/README.md)
 
 ---
 
-## Community and Support
+## Upgrade
 
-- Join the community on [Discord](https://discord.gg/8PjVCMu8Zw).
+```bash
+chmod +x upgrade.sh          # first time only
+./upgrade.sh --yes           # optional flags: --tag vX.Y.Z, --no-venv
+```
 
-<details>
-<summary><strong>WeChat group</strong></summary>
+The script backs up `config.yaml` and `data/`, syncs code from the release source, updates the `version` field, and restarts the server. Local `tools/`, `roles/`, and `skills/` are always preserved. To restore, copy back from `.upgrade-backup/` and re-run `./run.sh`.
 
-<img src="./images/wechat-group-cyberstrikeai-qr.jpg" alt="CyberStrikeAI WeChat group QR code" width="280">
+**Requirements** — `curl` or `wget` for downloads; `rsync` recommended for safe code sync. If the GitHub API rate-limits you, export `GITHUB_TOKEN` first.
 
-</details>
-
-<details>
-<summary><strong>Sponsorship via WeChat Pay or Alipay</strong></summary>
-
-<div align="center">
-  <img src="./images/sponsor-wechat-alipay-qr.jpg" alt="WeChat Pay and Alipay sponsorship QR codes" width="480">
-</div>
-
-</details>
-
-## License
-
-CyberStrikeAI is licensed under the Apache License 2.0.  
-See the [LICENSE](LICENSE) file for details.
+> **Before upgrading**, review the target release notes for configuration, database, and API changes. Back up even for patch upgrades — a version number alone is not a compatibility guarantee.
 
 ---
 
-## ⚠️ Disclaimer
+## Security and Responsible Use
 
-**This tool is for educational and authorized testing purposes only!**
+This project is a professional security testing platform intended for security researchers, penetration testers, and IT professionals conducting assessments **with explicit authorization**.
 
-CyberStrikeAI is a professional security testing platform designed to assist security researchers, penetration testers, and IT professionals in conducting security assessments and vulnerability research **with explicit authorization**.
+**By using this software you agree to:**
 
-**By using this tool, you agree to:**
-- Use this tool only on systems where you have clear written authorization
-- Comply with all applicable laws, regulations, and ethical standards
-- Take full responsibility for any unauthorized use or misuse
-- Not use this tool for any illegal or malicious purposes
+- Test only systems for which you hold clear, written authorization
+- Comply with all applicable laws, regulations, and professional standards
+- Accept full responsibility for any unauthorized or improper use
 
-**The developers are not responsible for any misuse!** Please ensure your usage complies with local laws and regulations, and that you have obtained explicit authorization from the target system owner.
+High-risk capabilities — WebShell, C2, credential attacks, post-exploitation tooling — are gated behind explicit configuration and RBAC. Keep the console bound to `127.0.0.1` or a trusted network, and review the [security model](docs/en-US/security-model.md) before enabling them.
 
-For vulnerability reporting and deployment hardening guidance, see [SECURITY.md](SECURITY.md).
+For vulnerability reports and hardening guidance, see [SECURITY.md](SECURITY.md).
 
 ---
 
-Need help or want to contribute? Open an issue or PR—community tooling additions are welcome!
+## License and Attribution
+
+Licensed under the **Apache License 2.0** — see [LICENSE](LICENSE) for the full text.
+
+ZREstrikeAI is a derivative work based on [CyberStrikeAI](https://github.com/Ed1s0nZ/CyberStrikeAI), also licensed under Apache-2.0. Rebranding, refactoring, and feature extensions are maintained by [@1276486](https://github.com/1276486). In accordance with Apache-2.0 §4, all original copyright, patent, trademark, and attribution notices are retained unmodified.
+
+Third-party tool names referenced in this document remain the property of their respective owners.
+
+---
+
+## Contributing
+
+Issues and pull requests are welcome. For non-trivial changes, open an issue first so the approach can be discussed before implementation.
