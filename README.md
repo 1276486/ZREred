@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="images/logo.png" alt="ZREstrikeAI" width="200">
+  
 </div>
 
 <h1 align="center">ZREstrikeAI</h1>
